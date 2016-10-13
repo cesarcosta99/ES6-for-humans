@@ -627,7 +627,7 @@ p.then((val) => console.log("Promise Resolved", val),
 Returning a value from `then` callbacks will pass the value to the next `then` callback.
 
 ```javascript
-var hello = new Promise((resolve, reject) => resolve("Hello"));
+var hello = new Promise((resolve, reject) => { resolve("Hello") });
 
 hello.then((str) => `${str} World`)
      .then((str) => `${str}!`)
@@ -638,9 +638,9 @@ When returning a promise, the resolved value of the promise will get passed to t
 This is a simple technique to avoid "callback hell".
 
 ```javascript
-var p = new Promise((resolve, reject) => resolve(1));
+var p = new Promise((resolve, reject) => { resolve(1) });
 
-var eventuallyAdd1 = (val) => new Promise((resolve, reject) => resolve(val + 1));
+var eventuallyAdd1 = (val) => new Promise((resolve, reject) => { resolve(val + 1) });
 
 p.then(eventuallyAdd1)
  .then(eventuallyAdd1)
